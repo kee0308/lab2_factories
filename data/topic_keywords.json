@@ -13,5 +13,8 @@
   },
   "support": {
     "description": "Customer support, help requests, and technical issues"
+  },
+  "billing": {
+    "description": "Invoices, refunds, charges, payment issues"
   }
 }
