@@ -5,7 +5,7 @@
 This project extends the email topic classification API to support:
 
 - Adding new topics dynamically and persisting them to `data/topic_keywords.json`
-- Storing emails with optional ground truth labels in `data/stored_emails.json`
+- Storing emails with optional ground truth labels in `data/emails.json`
 - Dual-mode inference:
   - `mode="topic"`: cosine similarity between email embedding and topic embeddings
   - `mode="email"`: cosine similarity between email embedding and stored email embeddings (nearest neighbor)
