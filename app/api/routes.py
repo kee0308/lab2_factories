@@ -20,7 +20,7 @@ router = APIRouter()
 # Simple file persistence
 # -----------------------------
 TOPICS_PATH = Path("data/topic_keywords.json")
-EMAILS_PATH = Path("data/stored_emails.json")
+EMAILS_PATH = Path("data/emails.json")
 
 def read_json(path: Path, default):
     if not path.exists():
