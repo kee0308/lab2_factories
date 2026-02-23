@@ -16,5 +16,8 @@
   },
   "billing": {
     "description": "Invoices, refunds, charges, payment issues"
+  },
+  "travel": {
+    "description": "Flights, hotels, reservations, itinerary changes, trip planning"
   }
 }

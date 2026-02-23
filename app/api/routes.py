@@ -72,7 +72,7 @@ class EmailAddResponse(BaseModel):
 async def add_topic(request: TopicCreateRequest):
     try:
         topics = read_json(TOPICS_PATH, default={})
-        topics[request.name] = {"description": request.description}  # ✅ FIX
+        topics[request.name] = {"description": request.description}  
         write_json(TOPICS_PATH, topics)
         return {"message": "Topic added", "topics": topics}
     except Exception as e:
@@ -120,7 +120,7 @@ async def store_email(request: EmailStoreRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# Optional: list stored emails for demo/debug
+# Optional: list stored emails
 @router.get("/emails")
 async def list_emails():
     try:
@@ -192,4 +192,3 @@ async def pipeline_info():
     inference_service = EmailTopicInferenceService()
     return inference_service.get_pipeline_info()
 
-# TODO: /features endpoint can be done later

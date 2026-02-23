@@ -3,6 +3,7 @@ from .base import BaseFeatureGenerator
 from app.dataclasses import Email
 from sentence_transformers import SentenceTransformer
 import numpy as np
+import re
 
 class SpamFeatureGenerator(BaseFeatureGenerator):
     """Generates spam detection features from email content"""
@@ -122,3 +123,23 @@ class RawEmailFeatureGenerator(BaseFeatureGenerator):
 # 
 # Hint: Use email.subject and email.body to access the text
 # Hint: You can use regex or string methods to count non-alphanumeric characters
+
+class NonTextCharacterFeatureGenerator(BaseFeatureGenerator):
+    """Counts non-alphanumeric characters in email subject and body"""
+
+    def generate_features(self, email: Email) -> Dict[str, Any]:
+        # Combine subject and body
+        subject = email.subject
+        body = email.body
+        all_text = f"{subject} {body}"
+
+        # Count characters that are NOT letters or numbers (ignore spaces)
+        non_text_chars = re.findall(r'[^a-zA-Z0-9\s]', all_text)
+
+        return {
+            "non_text_char_count": len(non_text_chars)
+        }
+
+    @property
+    def feature_names(self) -> list[str]:
+        return ["non_text_char_count"]
